@@ -1,4 +1,4 @@
-package tbt;
+package corridas;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
