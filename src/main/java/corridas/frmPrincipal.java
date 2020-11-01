@@ -26,6 +26,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         btnCalculos = new javax.swing.JButton();
         lblMeida = new javax.swing.JLabel();
+        lblVarianza = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +74,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCalculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMeida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblMeida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblVarianza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,7 +90,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMeida, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMeida, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblVarianza, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -122,8 +127,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 Logger.getLogger(frmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
             corridas.Pseudos numerosPseudos = new Pseudos(lista);
-            this.jTable1.setModel(numerosPseudos);
-            System.out.println(lista.size()+" Tamaño de Lista");
+            this.jTable1.setModel(numerosPseudos);            
         } else {
             lblRuta.setText("No valido");
         }
@@ -134,7 +138,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         double resultadoMedia = logic.mediaArraylista(lista);        
         lblMeida.setText(Double.toString(resultadoMedia));
         
-        
+        double resultadoVarianza = logic.varianzaArraylist(lista, resultadoMedia);
+        lblVarianza.setText(Double.toString(resultadoVarianza));        
     }//GEN-LAST:event_btnCalculosActionPerformed
 
     public static void main(String args[]) {
@@ -174,5 +179,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblMeida;
     private javax.swing.JLabel lblRuta;
+    private javax.swing.JLabel lblVarianza;
     // End of variables declaration//GEN-END:variables
 }
