@@ -48,27 +48,40 @@ public class logica {
     }
 
     int[] corridasArraylist(ArrayList<Double> pseudos) {
-        int[] resultado = new int[pseudos.size()-1];
+        int[] resultado = new int[pseudos.size() - 1];
 
         for (int i = 1; i < pseudos.size(); i++) {
             if (pseudos.get(i) <= pseudos.get(i - 1)) {
-                resultado[i-1] = 0;
+                resultado[i - 1] = 0;
             } else {
-                resultado[i-1] = 1;
+                resultado[i - 1] = 1;
             }
         }
         return resultado;
     }
-    
-    int corridasConteo(int[] corridas){
+
+    int corridasConteo(int[] corridas) {
         int conteo = 0;
         for (int i = 1; i < corridas.length; i++) {
-            if (corridas[i]!= corridas[i-1]) {
+            if (corridas[i] != corridas[i - 1]) {
                 conteo++;
             }
         }
         conteo++;
         return conteo;
     }
-    
+
+    double estadisticoZ(int conteo, ArrayList<Double> sizeA) {
+        int tamaño = sizeA.size();
+        double mc = ((2*tamaño)-1);
+        mc /=3;
+        double ac = ((16*tamaño)-29);
+        ac/=90;        
+        double z = (conteo-mc)/Math.sqrt(ac);
+        z = Math.pow(z, 2);
+        z = Math.sqrt(z);
+        z= ((double) Math.round(z * 100000d) / 100000d);
+        return z;
+    }
+
 }
