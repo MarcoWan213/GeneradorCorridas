@@ -20,20 +20,55 @@ public class logica {
         double sumatoria = 0;
         for (int i = 0; i < pseudos.length; i++) {
             sumatoria += pseudos[i];
-            System.out.println(pseudos[i]);
         }
         double resultado = (sumatoria / pseudos.length);
         return resultado;
-    }
+    }//Eliminable
 
     double mediaArraylista(ArrayList<Double> pseudos) {
         double sumatoria = 0;
         for (int i = 0; i < pseudos.size(); i++) {
             sumatoria += pseudos.get(i);
-            System.out.println(pseudos.get(i));
         }
         double resultado = (sumatoria / pseudos.size());
+        resultado = ((double) Math.round(resultado * 100000d) / 100000d);
         return resultado;
     }
 
+    double varianzaArraylist(ArrayList<Double> pseudos, double media) {
+        double sumatoria = 0;
+        for (int i = 0; i < pseudos.size(); i++) {
+            sumatoria += Math.pow((pseudos.get(i) - media), 2);
+        }
+        double denominador = pseudos.size();
+        double div = 1 / denominador;
+        double resultado = div * sumatoria;
+        resultado = ((double) Math.round(resultado * 10000000d) / 10000000d);
+        return resultado;
+    }
+
+    int[] corridasArraylist(ArrayList<Double> pseudos) {
+        int[] resultado = new int[pseudos.size()-1];
+
+        for (int i = 1; i < pseudos.size(); i++) {
+            if (pseudos.get(i) <= pseudos.get(i - 1)) {
+                resultado[i-1] = 0;
+            } else {
+                resultado[i-1] = 1;
+            }
+        }
+        return resultado;
+    }
+    
+    int corridasConteo(int[] corridas){
+        int conteo = 0;
+        for (int i = 1; i < corridas.length; i++) {
+            if (corridas[i]!= corridas[i-1]) {
+                conteo++;
+            }
+        }
+        conteo++;
+        return conteo;
+    }
+    
 }
